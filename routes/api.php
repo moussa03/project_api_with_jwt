@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::group(['middelware'=>'auth:api'],function(){
+
+Route::post('get_api','Api_Controller\test_api@get_info');
+
+});
