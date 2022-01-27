@@ -37,8 +37,11 @@ Route::group(['prefix'=>'admin','namespace'=>'Api_Controller\Admin'],function(){
     Route::post('logout','AuthController@logout')->middleware('auth-api:admin-api');
 });
 
-Route::group(['prefix'=>'profile','namespace'=>'Api_Controller\Profile'],function(){
+Route::group(['prefix'=>'profile','middleware'=>['api','auth-api:user-api'],'namespace'=>'Api_Controller\Profile'],function(){
     Route::post('login','AuthController@login');
-    Route::get('profile','AuthController@profile')->middleware('auth-api:user-api');
+    // Route::get('profile','AuthController@profile')->middleware('auth-api:user-api');
+    Route::get('profile',function(){
+      return \Auth::user();
+    });
 
 });
