@@ -21,6 +21,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+      
     ];
 
     /**
@@ -63,5 +64,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'checkpass' => \App\Http\Middleware\CheckPass::class,
+        'ChangeLanguage' => \App\Http\Middleware\ChangeLanguage::class,
+        //  'check-admin-token' => \App\Http\Middleware\CheckAdminToken::class,
+        'auth-api' => \App\Http\Middleware\Api_Token::class,
+
     ];
 }
